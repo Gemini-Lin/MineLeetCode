@@ -1,0 +1,19 @@
+//暴力破解法
+int* twoSum(int* nums, int numsSize, int target, int* returnSize){
+    //int* res = (int *)malloc(sizeof(int) * 2);指针
+    static int a[2]={0};
+    * returnSize=0;
+    for(int i = 0; i < numsSize-1; i++) {
+        for(int j = i + 1; j < numsSize; j++) {
+            if(nums[i] + nums [j] == target) {
+                a[0] = i;
+                a[1] = j;
+                *returnSize = 2;
+                return a;
+            }
+        }
+    }
+    return a;
+}
+/*因为如果不用静态的话，数组的生命周期就是从定义的地方到函数结束，函数运行结束，这个内存也就释放掉了。
+返回的是数组的首地址，一旦函数运行结束，这个地址里的东西就变成空了，所以要用静态数组延长数组的生命周期。*/
